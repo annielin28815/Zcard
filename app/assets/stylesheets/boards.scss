@@ -1,3 +1,15 @@
-// Place all the styles related to the Boards controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+// 出錯的顏色獨立出來，方便日後修改！
+$error_color: red;
+// 可以讓出錯的文字匡，不要呈現獨立的div（因為div是 block）
+.field_with_errors {
+  display: inline;
+
+  label {
+    color: $error_color;
+  }
+
+  input[type="text"] {
+    border: solid 1px $error_color;
+    color: $error_color;
+  }
+}

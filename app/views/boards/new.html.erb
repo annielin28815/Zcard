@@ -1,5 +1,13 @@
 <h1>新增看板</h1>
 
-<form action="/boards" method="post">
-  <button type="submit">送出</button>
-</form>
+
+<!-- @board 連到  boards_controller.rb的
+  def new
+    @board = Board.new
+  end -->
+<%= form_for(@board) do |f| %>
+  <%= f.label :title, '看板標題' %>
+  <!-- 會自動填值（塞肉）進去 -->
+  <%= f.text_field :title %>
+  <%= f.submit %>
+<% end %>
