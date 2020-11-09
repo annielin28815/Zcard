@@ -1,3 +1,10 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  # 將首頁指定到boards那個html.erb
+  root 'boards#index'
+
+  resources :boards
+
+  
+
 end
