@@ -10,7 +10,14 @@
   </head>
 
   <body>
-    <p><%= flash["notice"] %></p>
-    <%= yield %>
+    <%= render "shared/navbar" %>
+    <!-- 加了條件後，變成如果有才渲染。這樣就不會有空的p的問題。 
+        <p><%= flash["notice"] %></p> -->
+    <%= render "shared/flash" if flash[
+    "notice"]%>
+    <main class="main-section">
+      <%= yield %>
+    </main>
+    
   </body>
 </html>

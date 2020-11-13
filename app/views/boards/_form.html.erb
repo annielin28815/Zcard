@@ -1,0 +1,15 @@
+<% if board.errors.any? %>
+  <ul>
+    <% board.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for(board) do |form| %>
+  <%= form.label :title, '看板標題' %>
+  <!-- 會自動填值（塞肉）進去 -->
+  <%= form.text_field :title %>
+  <!-- 會自動辨別按鈕用意 -->
+  <%= form.submit %>
+<% end %>
