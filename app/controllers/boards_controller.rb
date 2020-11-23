@@ -1,14 +1,17 @@
 class BoardsController < ApplicationController
 
   before_action :find_board, only: [:show, :edit, :update, :destroy]
+  include SessionsHelper
 
   def index
     @boards = Board.all
   end
 
   def show
-    
-
+    # 11/23(15:53)
+    # @posts = Post.where(board: @board)
+    # @posts = Post.where(board_id: @board.id)
+    @posts = @board.posts.order(id: :desc)
   end
 
   def new
@@ -29,11 +32,6 @@ class BoardsController < ApplicationController
       render :new,notice: '請重新編輯看板名稱，字數需超過四個字'
     end
   end
-
-  def show
-    # 因為會用預設的resource做出來的:id
-  end
-
 
   def edit
   end
