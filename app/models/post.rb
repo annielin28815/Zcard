@@ -6,7 +6,7 @@ class Post < ApplicationRecord
   validates :content, presence: true
 
   def owned_by?(user)
-    # 前面是belongs_to :user做出來的  =  後面是owned_by?(user)做出來的
+    # 下行前面的user是belongs_to :user做出來的、後面的user是owned_by?(user)做出來的
     self.user == user
   end
 end

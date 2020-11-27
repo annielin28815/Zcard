@@ -4,13 +4,14 @@ Rails.application.routes.draw do
   root 'boards#index'
 
   # 會員登入系統
-   resource :users, controller: 'registrations', only: [:create, :edit, :update] do
+  resource :users, controller: 'registrations', only: [:create, :edit, :update] do
     # 下行原型：get '/users/sign_up', to: 'registrations#new', as: 'registration'
     get '/sign_up', action: 'new'
   end
-  # post '/users', to: 'registrations#create'
-  # get '/users/edit', to: 'registrations#edit',as: 'edit_registration'
-  # get '/users/edit', to: 'registrations#update',as: 'update_registration'
+
+    # post '/users', to: 'registrations#create'
+    # get '/users/edit', to: 'registrations#edit',as: 'edit_registration'
+    # get '/users/edit', to: 'registrations#update',as: 'update_registration'
 
   resource :users, controller: 'sessions', only: [] do
     get '/sign_in', action: 'new'
