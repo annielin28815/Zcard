@@ -9,3 +9,19 @@
 </article>
 
 <%= link_to '回上頁', :back %>
+
+<%= form_for(@comment, url: post_comments_path(@post), remote: true) do |f| %>
+  <%= f.text_area :content, placeholder: '請輸入留言' %>
+  <%= f.submit '送出' %>
+<% end %>
+
+<ul class="comment">
+  <%# render collection
+  app/views/comments/_comment.html.erb %>
+  <%= render @comments%>
+
+  <%# 原型是下面這樣，但不推薦在each迴圈裡，做render %>
+  <%# <% @comments.each do |comment| %>
+    <%# <%= render "comments/comment", comment: comment %>
+  <%# <% end %> 
+</ul>

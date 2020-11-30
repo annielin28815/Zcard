@@ -1,11 +1,15 @@
 class PostsController < ApplicationController
-  before_action :session_required, only: [:create]
+  before_action :session_required, only: [:create, :edit, :update]
   before_action :set_board, only: [:new, :create]
   before_action :set_post, only: [:show]
 
   
   def show
-    @post = Post.find(params[:id])
+    @comment = Comment.new
+    # includes(:user) -> 請去找user的資料(這時的user只是符號)
+    @comments = @post.comments.includes(:user)
+    # select * from posts where id = 7
+    # select * from users where id in (3, 5, 8)
   end
 
   def new

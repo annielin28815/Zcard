@@ -1,0 +1,5 @@
+var comment_area = document.querySelector('.comment');
+comment_area.innerHTML = "<%= j render('comments/comment', comment: @comment) %>" + comment_area.innerHTML;
+
+<%# 把原本輸入的訊息值在輸入匡清空 %>
+document.querySelector('#comment_content').value = '';

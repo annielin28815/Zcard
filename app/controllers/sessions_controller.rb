@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
       redirect_to root_path, notice: '登入成功'
     else
       # 因為不想給登入失敗的人去猜測
-      redirect_to session_path, notice: '登入失敗'
+      redirect_to sign_in_users_path, notice: '登入失敗'
     end
   end
 

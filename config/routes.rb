@@ -27,4 +27,8 @@ Rails.application.routes.draw do
       resources :posts, shallow: true
     end
 
+    # 11/30(10:53)
+  resources :posts, only:[] do
+    resources :comments, shallow: true, only: [:create, :destroy]
+  end
 end

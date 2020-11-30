@@ -11,6 +11,7 @@ class User < ApplicationRecord
   before_create :encrypt_password
 
   has_many :posts
+  has_many :comments
 
   # 是一個類別方法，後面的user可以隨意更換
   def self.login(user)
