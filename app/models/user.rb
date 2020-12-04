@@ -13,10 +13,17 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments
 
+  has_many :favorite_posts
+  has_many :my_favorites, through: :favorite_posts, source: 'post'
+
   # 是一個類別方法，後面的user可以隨意更換
   def self.login(user)
     pw = Digest::SHA1.hexdigest("a#{user[:password]}z")
     User.find_by(email: user[:email],password: pw)
+  end
+
+  def favorite?(post)
+    my_favorites.include?(post)
   end
 
   private

@@ -30,5 +30,9 @@ Rails.application.routes.draw do
     # 11/30(10:53)
   resources :posts, only:[] do
     resources :comments, shallow: true, only: [:create, :destroy]
+    
+    member do
+      post :favorite  # POST /posts/:id/favorite
+    end
   end
 end

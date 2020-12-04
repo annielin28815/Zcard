@@ -9,7 +9,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="<%= controller_name %>-<%= action_name %>%">
     <%= render "shared/navbar" %>
     <!-- 加了條件後，變成如果有才渲染。這樣就不會有空的p的問題。 
         <p><%= flash["notice"] %></p> -->
