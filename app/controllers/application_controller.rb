@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
+  include Pundit
 
   # 只要在這class裡的action出錯，可以依循後面的方法，引導去別的頁面轉址或印出notice訊息等。
   # rescue_from 是一個類別方法。

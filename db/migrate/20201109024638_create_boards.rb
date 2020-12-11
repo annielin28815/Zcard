@@ -4,6 +4,8 @@ class CreateBoards < ActiveRecord::Migration[6.0]
       t.string :title
 
       t.timestamps
+    
+
     end
   end
 end

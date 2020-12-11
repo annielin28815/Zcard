@@ -7,7 +7,11 @@ class PostsController < ApplicationController
   def show
     @comment = Comment.new
     # includes(:user) -> 請去找user的資料(這時的user只是符號)
-    @comments = @post.comments.includes(:user)
+    @comments = @post.comments.includes(:user).page(params[:page]).per(5)
+    # /posts/7?page=2
+    # params[:]
+
+
     # select * from posts where id = 7
     # select * from users where id in (3, 5, 8)
   end
@@ -64,10 +68,8 @@ class PostsController < ApplicationController
       current_user.my_favorites << post
       render json: {status: 'added'}
     end
-
-    
-    
   end
+
 
   private
   def set_board
@@ -79,6 +81,6 @@ class PostsController < ApplicationController
   end
 
   def set_post
-    @post = Post.find(params[:id])
+    @post = Post.friendly.find(params[:id])
   end
 end

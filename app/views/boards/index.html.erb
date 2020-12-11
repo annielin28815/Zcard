@@ -10,7 +10,11 @@
     <!-- confirm 是有選項可以選的，alert 則是只有一個選項。-->
     <%= link_to "刪除", board_path(board),method: 'delete', data: { confirm: '是否確定刪除？' } %>
 
-    <%= link_to board.title, board_path(board) %>
+    <%= link_to "隱藏", hide_board_path(board),method: 'patch' if board.may_hide? %>
+    <%= link_to "開放", open_board_path(board),method: 'patch' if board.may_open? %>
+    <%= link_to "鎖定", lock_board_path(board),method: 'patch' if board.may_lock? %>
+
+    <%= link_to board.title, board, class: board_title_css(board) %>
   </li>
   <% end %>
 </ul>

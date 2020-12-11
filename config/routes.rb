@@ -24,6 +24,11 @@ Rails.application.routes.draw do
 
     # 14:20
     resources :boards do
+      member do
+        patch :hide
+        patch :open
+        patch :lock
+      end
       resources :posts, shallow: true
     end
 

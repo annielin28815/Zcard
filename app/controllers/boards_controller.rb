@@ -1,6 +1,6 @@
 class BoardsController < ApplicationController
+  before_action :find_board, only: [:show, :edit, :update, :destroy, :hide, :open, :lock]
 
-  before_action :find_board, only: [:show, :edit, :update, :destroy]
   include SessionsHelper
 
   def index
@@ -49,6 +49,22 @@ class BoardsController < ApplicationController
   def destroy
     @board.destroy
     redirect_to root_path, notice: '看板已刪除'
+  end
+
+  def hide
+    authorize @board, :hide?
+    @board.hide! if @board.may_hide?
+    redirect_to boards_path, notice: '看板己隱藏'
+  end
+
+  def open
+    @board.open! if @board.may_open?
+    redirect_to boards_path, notice: '看板己開放'
+  end
+
+  def lock
+    @board.lock! if @board.may_lock?
+    redirect_to boards_path, notice: '看板己鎖定'
   end
 
   private
