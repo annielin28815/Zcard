@@ -23,14 +23,14 @@ Rails.application.routes.draw do
     # delete '/users/sign_out', to: 'sessions#destroy', as: 'logout'
 
     # 14:20
-    resources :boards do
-      member do
-        patch :hide
-        patch :open
-        patch :lock
-      end
-      resources :posts, shallow: true
+  resources :boards do
+    member do
+      patch :hide
+      patch :open
+      patch :lock
     end
+    resources :posts, shallow: true
+  end
 
     # 11/30(10:53)
   resources :posts, only:[] do

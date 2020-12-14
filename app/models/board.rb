@@ -6,7 +6,7 @@ class Board < ApplicationRecord
   validates :title, presence: true ,length: {minimum: 4}
 
   has_many :posts
-  belong_to :user
+  belongs_to :user
 
 
 
@@ -32,6 +32,5 @@ class Board < ApplicationRecord
       transitions from: [:locked, :hidden], to: :open
     end
   end
-
 
 end

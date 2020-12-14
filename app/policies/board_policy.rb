@@ -1,9 +1,16 @@
 class BoardPolicy < ApplicationPolicy
-    def hide?
-      # 有登入，且角色是
-      user && (user.role == 'bm' || user.role == 'admin') 
-    end
 
+  def hide?
+    user && user.role == 'bm' && record.user == user
+  end
+
+  def lock?
+    hide?
+  end
+
+  def open?
+    hide?
+  end
 
   class Scope < Scope
     def resolve
